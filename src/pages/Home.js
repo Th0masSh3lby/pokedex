@@ -11,31 +11,17 @@ import { faArrowUpRightFromSquare } from "@fortawesome/free-solid-svg-icons";
 import { useEffect } from "react";
 
 function Home({ setBookmark, bookmark, bookmarkList, setBookmarkList }) {
-  const [pokemonData, setPokemonData] = useState([]);
-  const [pokemonList, setPokemonList] = useState([]);
-  const [nextUrl, setNextUrl] = useState("");
-  const [loading, setLoading] = useState(false);
-  const [loading1, setLoading1] = useState(false);
-  const [error2, setError2] = useState(false);
-  const [error1, setError1] = useState(false);
-  const [end, setEnd] = useState(false);
-  const [active, setActive] = useState([]);
-  //const [bookmark, setBookmark] = useState([]);
-  //let bookmarktemp = [...allbookmark];
+  const [pokemonData, setPokemonData] = useState([]); //to store full pokemon data
+  const [pokemonList, setPokemonList] = useState([]); //for names 20 at a time
+  const [nextUrl, setNextUrl] = useState(""); //sets url to fetch next
+  const [loading, setLoading] = useState(false); //sets true if fetching is in progress
+  const [loading1, setLoading1] = useState(false); //sets true if scrolling is on
+  const [error2, setError2] = useState(false); //catch error for names fetch api
+  const [error1, setError1] = useState(false); //catch error for data fetch api
+  const [end, setEnd] = useState(false); //sets to true if all pokemon list is fetched
+  const [active, setActive] = useState([]); //toggle to open fullCard details popup
 
-  // const getImage = async (data) => {
-  //   const imageRes = null;
-  //   try {
-  //     imageRes = await fetch(data.sprites.front_default);
-  //   } catch (error) {
-  //     setImage([...image, fire]);
-
-  //     console.log("There was an error", error);
-  //   }
-  //   if (imageRes) {
-  //     setImage([...image, imageRes]);
-  //   }
-  // };
+  //getList for fetching PokemonList - fetches 20 pokemon names at a time
   const getList = async (url) => {
     if (pokemonList.length > 999) {
       setEnd(true);
@@ -46,7 +32,6 @@ function Home({ setBookmark, bookmark, bookmarkList, setBookmarkList }) {
     if (loading === true) {
       return;
     }
-
     setLoading(true);
 
     const data = await fetch(url)
@@ -60,6 +45,7 @@ function Home({ setBookmark, bookmark, bookmarkList, setBookmarkList }) {
         setError2(true);
       });
 
+    //createPokemonObject function for getting data for every pokemon name
     function createPokemonObject(results) {
       results.forEach(async (pokemon) => {
         const res = await fetch(
@@ -91,17 +77,15 @@ function Home({ setBookmark, bookmark, bookmarkList, setBookmarkList }) {
       setLoading(false);
     }
   };
+  //
 
+  //get initial list of 20 names once loaded
   useEffect(() => {
     getList(`https://pokeapi.co/api/v2/pokemon/`);
   }, []);
-
-  useEffect(() => {
-    //setAllbookmark([...bookmarktemp, ...bookmark]);
-    console.log("bookmark", bookmark);
-    //console.log("all", allbookmark);
-  }, [bookmark]);
-
+  //
+  //set interval to check if the scroll is reached a certain mark
+  //or removes interval if all pokemons are loaded
   useEffect(() => {
     if (pokemonList.length > 999) {
       setEnd(true);
@@ -112,9 +96,6 @@ function Home({ setBookmark, bookmark, bookmarkList, setBookmarkList }) {
 
     if (!error2 && !error1) {
       const timer = setInterval(() => {
-        //console.log(typesF, filterPower);
-        // console.log(bookmark);
-
         let scrollheight = 0;
         if (document.documentElement.offsetHeight > 10000) {
           scrollheight =
@@ -133,14 +114,6 @@ function Home({ setBookmark, bookmark, bookmarkList, setBookmarkList }) {
             Math.floor(document.documentElement.offsetHeight * 0.85);
         }
 
-        // console.log(
-        //   scrollheight,
-        //   window.innerHeight,
-        //   document.documentElement.scrollTop,
-        //   Math.floor(document.documentElement.offsetHeight),
-        //   loading
-        // );
-
         if (scrollheight > 0) {
           setLoading1(true);
           getList(nextUrl);
@@ -151,27 +124,30 @@ function Home({ setBookmark, bookmark, bookmarkList, setBookmarkList }) {
           return;
         }
       }, 2200);
-
       return () => clearInterval(timer);
     }
   }, [nextUrl, error2, error1]);
+  //
 
+  //Trigger for opening fullcard popup
   const handleTrigger = (name) => {
     setActive([name, "on"]);
   };
-
+  //
+  //Home component
   return (
     <div className="Home">
       <h1 className="title">Pokedex</h1>
-
       <div className="subHead">
         <h3 className="subHeadH3">All Pokemons</h3>{" "}
-        <Link to="/search">
+        {/*LetsCapture Option for SearchBar*/}
+        <Link to="/pokedex/search">
           <div className="search">Let's Capture </div>
         </Link>
       </div>
       <div className="divider"></div>
 
+      {/*All Pokemons Grid*/}
       <div className="allPokemons">
         {pokemonData.length > 0 &&
           pokemonData.map((value, index) => {
@@ -193,16 +169,6 @@ function Home({ setBookmark, bookmark, bookmarkList, setBookmarkList }) {
                       title={value.name}
                       alt="loading"
                     />
-
-                    {/* <img
-                      className="pokImage"
-                      title={value.name}
-                      src={}
-                      onError={(event) => {
-                        event.target.title = "image cannot be loaded";
-                        event.target.src = { fire };
-                      }}
-                    /> */}
                   </div>
                   <div className="contentWrapper">
                     <div className="typeAbility">
@@ -229,6 +195,7 @@ function Home({ setBookmark, bookmark, bookmarkList, setBookmarkList }) {
                   </div>
                 </div>
                 {active[0] === value.name && (
+                  /*ViewCard full Html*/
                   <ViewCard
                     value={value}
                     active={active}
@@ -242,6 +209,7 @@ function Home({ setBookmark, bookmark, bookmarkList, setBookmarkList }) {
               </div>
             );
           })}
+        {/*set Loading Error and End components */}
         {(loading || loading1) && <div className="spinner"></div>}
         {(error2 || error1) && (
           <div className="error">

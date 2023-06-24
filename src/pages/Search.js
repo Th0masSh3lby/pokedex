@@ -1,9 +1,9 @@
-import { filterPower } from "./typesF";
 import { useState, useEffect } from "react";
 import ViewCard from "./viewCard";
 import "./Search.css";
 import "./pokemoncard.css";
 import "./pokemonFull.css";
+import { filterPower } from "./typesF";
 import pokeball from "./pokeball.jpg";
 import AllFilter from "./allFilter";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -13,21 +13,22 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 
 function Search({ setBookmark, bookmark, setBookmarkList, bookmarkList }) {
-  const [typesFi, setTypesFi] = useState([]);
-  const [end, setEnd] = useState(false);
-  const [error, setError] = useState(false);
-  const [error1, setError1] = useState(false);
-  const [pokemon, setPokemon] = useState("");
-  const [temp, setTemp] = useState("");
-  const [pokemonData, setPokemonData] = useState([]);
-  const [pokemonList, setPokemonList] = useState([]);
-  const [nextUrl, setNextUrl] = useState("https://pokeapi.co/api/v2/pokemon/");
-  const [loading, setLoading] = useState(false);
-  const [loading1, setLoading1] = useState(false);
-  const [view, setView] = useState(false);
-  const [wait, setWait] = useState(true);
-  const [filter, setFilter] = useState(false);
+  const [typesFi, setTypesFi] = useState([]); //filter array for catching types
+  const [end, setEnd] = useState(false); //sets to true if all pokemon list is fetched
+  const [error, setError] = useState(false); //catch error for names fetch api
+  const [error1, setError1] = useState(false); //catch error for data fetch api
+  const [pokemon, setPokemon] = useState(""); //sets the input on submit search
+  const [temp, setTemp] = useState(""); //captures input as soon as it changes
+  const [pokemonData, setPokemonData] = useState([]); //to store full pokemon data
+  const [pokemonList, setPokemonList] = useState([]); //for names 20 at a time
+  const [nextUrl, setNextUrl] = useState("https://pokeapi.co/api/v2/pokemon/"); //sets url to fetch next
+  const [loading, setLoading] = useState(false); //sets true if fetching is in progress
+  const [loading1, setLoading1] = useState(false); //sets true if scrolling is on
+  const [view, setView] = useState(false); //to start viewing the searched pokemons
+  const [wait, setWait] = useState(true); //if apply is ch
+  const [filter, setFilter] = useState(false); //when the filter button should show
 
+  //getList for fetching PokemonList - fetches 20 pokemon names at a time
   const getList = async (url) => {
     setError(false);
     if (pokemonList.length > 999) {
@@ -52,7 +53,7 @@ function Search({ setBookmark, bookmark, setBookmarkList, bookmarkList }) {
       .catch((error) => {
         setError(true);
       });
-
+    //createPokemonObject function for getting data for every pokemon name
     function createPokemonObject(results) {
       results.forEach(async (pokemon) => {
         const res = await fetch(
@@ -83,6 +84,9 @@ function Search({ setBookmark, bookmark, setBookmarkList, bookmarkList }) {
       setLoading(false);
     }
   };
+  //
+  //set interval to check if the scroll is reached a certain mark
+  //or removes interval if all pokemons are loaded
 
   useEffect(() => {
     if (!view) return;
@@ -129,6 +133,9 @@ function Search({ setBookmark, bookmark, setBookmarkList, bookmarkList }) {
     return () => clearInterval(timer);
   }, [nextUrl, view]);
 
+  //
+
+  //onClicking SearchICon
   const handleSubmit = (e) => {
     setEnd(false);
     setTypesFi([]);
@@ -139,15 +146,8 @@ function Search({ setBookmark, bookmark, setBookmarkList, bookmarkList }) {
     setPokemon(temp);
     setActive(["", "off"]);
     setView(true);
-
-    //getPokemonData(pokemon);
-    console.log("Data", pokemonData);
-    console.log("LIST", pokemonList);
-    console.log("Name", RegExp(pokemon));
-
-    console.log("view", view);
   };
-
+  //onChanging the input text
   const handleChange = (e) => {
     setView(false);
     setTypesFi([]);
@@ -155,11 +155,11 @@ function Search({ setBookmark, bookmark, setBookmarkList, bookmarkList }) {
     setTemp(e.target.value.toLowerCase());
   };
 
-  const [active, setActive] = useState([]);
+  const [active, setActive] = useState([]); //for toggling Fullcard popup
 
+  //for opening fullcard popup
   const handleTrigger = (name) => {
     setActive([name, "on"]);
-    console.log(active);
   };
 
   return (
@@ -176,6 +176,7 @@ function Search({ setBookmark, bookmark, setBookmarkList, bookmarkList }) {
           <FontAwesomeIcon icon={faMagnifyingGlass} />
         </button>
       </div>
+      {/*filter element */}
       {
         <AllFilter
           typesFi={typesFi}
@@ -187,13 +188,14 @@ function Search({ setBookmark, bookmark, setBookmarkList, bookmarkList }) {
           setEnd={setEnd}
         />
       }
-
+      {/*Pokemons Grid*/}
       <div className="allPokemons">
         {view &&
           wait &&
           pokemonData.length > 0 &&
           pokemonData.map((value, index) => {
             if (
+              //function for searching the list using regex
               RegExp(pokemon).test(value.name) &&
               (!filterPower[0] ||
                 (filterPower[0] &&
@@ -201,14 +203,7 @@ function Search({ setBookmark, bookmark, setBookmarkList, bookmarkList }) {
             ) {
               return (
                 <div className="PokemoncardWrapper">
-                  {" "}
-                  <div
-                    // onClick={(e) => {
-                    //   e.preventDefault();
-                    //   return handleTrigger(value.name);
-                    // }}
-                    className="Pokemoncard"
-                  >
+                  <div className="Pokemoncard">
                     <div className="Pokname">
                       #{value.id}: {value.name.toUpperCase()}
                     </div>
@@ -249,6 +244,7 @@ function Search({ setBookmark, bookmark, setBookmarkList, bookmarkList }) {
                     </div>
                   </div>
                   {active[0] === value.name && (
+                    /*ViewCard component*/
                     <ViewCard
                       value={value}
                       active={active}
@@ -263,6 +259,8 @@ function Search({ setBookmark, bookmark, setBookmarkList, bookmarkList }) {
               );
             }
           })}
+
+        {/*set Loading Error and End components */}
         {view && (loading || loading1) && <div className="spinner"></div>}
         {view && (error || error1) && (
           <div className="error">

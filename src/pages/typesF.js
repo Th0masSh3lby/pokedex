@@ -1,2 +1,1 @@
-export const typesF = [],
-  filterPower = [false];
+export const filterPower = [false];

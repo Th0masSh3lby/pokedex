@@ -9,7 +9,7 @@ function Bookmarks({ setBookmark, bookmark, bookmarkList, setBookmarkList }) {
     <div className="Home">
       <div className="subHead">
         <h3 className="subHeadH3">Captured Pokemons</h3>{" "}
-        <Link to="/search">
+        <Link to="/pokedex/search">
           <div className="search">Capture More</div>
         </Link>
       </div>

@@ -8,7 +8,7 @@ import { Routes, Route } from "react-router-dom";
 import "./App.css";
 
 function App() {
-  const [bookmark, setBookmark] = useState([]);
+  const [bookmark, setBookmark] = useState([]); //for bookmarks
   const [bookmarkList, setBookmarkList] = useState([]);
   return (
     <div className="App">
@@ -16,7 +16,7 @@ function App() {
 
       <Routes>
         <Route
-          path="/"
+          path="/pokedex"
           element={
             <Home
               setBookmark={setBookmark}
@@ -27,7 +27,7 @@ function App() {
           }
         />
         <Route
-          path="/search"
+          path="/pokedex/search"
           element={
             <Search
               setBookmark={setBookmark}
@@ -38,7 +38,7 @@ function App() {
           }
         />
         <Route
-          path="/bookmarks"
+          path="/pokedex/bookmarks"
           element={
             <Bookmarks
               setBookmark={setBookmark}

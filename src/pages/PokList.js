@@ -5,8 +5,9 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowUpRightFromSquare } from "@fortawesome/free-solid-svg-icons";
 
 function PokList({ setBookmark, bookmark, bookmarkList, setBookmarkList }) {
-  const [active, setActive] = useState([]);
+  const [active, setActive] = useState([]); //for toggling FullCard popup
 
+  //for handling trigger
   const handleTrigger = (name) => {
     setActive([name, "on"]);
   };
@@ -59,6 +60,7 @@ function PokList({ setBookmark, bookmark, bookmarkList, setBookmarkList }) {
                 </div>
               </div>
               {active[0] === value.name && (
+                //fullcard element
                 <ViewCard
                   value={value}
                   active={active}
