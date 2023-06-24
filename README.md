@@ -1,70 +1,39 @@
-# Getting Started with Create React App
+Project - Pokedex App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Required Features ---> Search page, Listing Page, View details Page,
+Bookmarks Page
 
-## Available Scripts
+Assumptions:
+Max Number of Pokemons = 999
+for HomePage: -Intial fetch list of 20 pokemons
+-Send for 20 more pokemon requests if scroll bar goes below a certain point
+for SearchPage: -Fetch and search the list of 20 pokemons on succesful submit.
+-Fetch and search for more if the list is below 3/ scrollbar goes below a certain point.
+-setLoading spinner to true during the search and fetch requests;
+for ViewDetails: -Open as a popup
+-Showing 2 sets of info --- Basic info and Stats;
 
-In the project directory, you can run:
+Current Features
 
-### `npm start`
+1. NavBar -- Done
+2. Footer -- Done
+3. HomePage -- Done
+4. ViewPage -- Done
+5. BookMarks -- Done
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
-
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Steps Taken
+-NavBar --Done
+-Footer --Done
+-HomePage (CSs left)
+Features - List all Pokemons(using infinte scroll ==> send api request for more only if the scrollbar is below a certain mark) - Set Loading Spinner --Done - navigate from card to view Full details
+-CardCSS -- Done
+-ViewPage/card
+Features - Popup , Toggle Bookmark button
+JS and CSS Done
+-HomePage CSS - Done
+-SearchPage(css Left)
+Features - start sending api request only after Search button is submitted. - Infinite scroll, Loading spinner and Viewcard same as Home Page.
+-SearchPageCSS - Done
+-Bookmark and BookmarkCSS
+Features - Imported bookmarks and other features are same as HOmePage
+Adding to github and deploying - Done

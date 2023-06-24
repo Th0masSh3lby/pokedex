@@ -1,0 +1,143 @@
+.fullwrapper {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.fullmodal {
+  background: none;
+  position: relative;
+  max-width: 700px;
+
+  width: 100%;
+  height: 70%;
+  margin: auto;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  background-color: white;
+  border-radius: 7px;
+  text-align: center;
+  box-shadow: 0 0 20px rgb(0 0 0 /40%);
+}
+
+.popup.off {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.2s 0s, visibility 0s 0.2s;
+  -webkit-transition: opacity 0.2s 0s, visibility 0s 0.2s;
+}
+
+.popup.on {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 999;
+  opacity: 1;
+  visibility: visible;
+  transition: opacity 2s 0s, visibility 0s 2s;
+  -webkit-transition: opacity 2s 0s, visibility 0s 2s;
+}
+
+.full-top-half {
+  margin: 0;
+  background: rgb(66, 66, 102);
+  width: 100%;
+  height: 45%;
+  display: grid;
+  grid-template-columns: 4fr 3fr;
+  border-radius: 7px 7px 10px 10px;
+}
+
+.full-cardName {
+  color: whitesmoke;
+  background: none;
+}
+
+.full-Pokename {
+  margin: 20% 0;
+  background: none;
+}
+.full-PokImg {
+  display: box;
+  height: 150px;
+  margin-top: 5%;
+  margin-right: 18%;
+  border: 1px solid black;
+  background: none;
+}
+
+.full-pokImage {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.full-bottom-half {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  color: black;
+}
+
+.full-basic-info,
+.full-stats {
+  align-items: left;
+  text-align: left;
+  padding: 10px;
+}
+
+.fullh2 {
+  margin-left: 20px;
+  margin-bottom: 5px;
+  border-bottom: 1px solid black;
+}
+
+.full-det {
+  margin-left: 20px;
+  line-height: 25px;
+  font-weight: 600;
+}
+
+.close {
+  background: none;
+  border: none;
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 10px;
+}
+
+.close-outline {
+  color: whitesmoke;
+  background: none;
+  font-size: 30px;
+}
+
+.close-outline:hover {
+  cursor: pointer;
+}
+
+.bookmarkButton {
+  margin: 20px auto 0;
+  padding: 0 20px;
+  border: none;
+  display: block;
+  line-height: 40px;
+  background: rgb(66, 66, 102);
+  color: white;
+  border-radius: 10px;
+}
+
+.bookmarkButton:hover {
+  cursor: pointer;
+}

@@ -1,0 +1,106 @@
+.Home {
+  background: #19335f;
+  color: whitesmoke;
+  height: auto;
+  min-height: 95vh;
+  max-width: 100vw;
+  margin: 0;
+  padding-top: 91px;
+  text-align: center;
+  overflow-x: hidden;
+}
+
+.title {
+  font-size: 55px;
+  margin-bottom: 0;
+}
+
+.search {
+  display: block;
+  width: 150px;
+  height: 40px;
+  background-color: black;
+  margin: 0 auto;
+  padding: 10px 3px 0;
+  font-size: 18px;
+  border-radius: 25px;
+}
+
+.search:hover {
+  box-shadow: 0px 0px 20px -5px #fff;
+}
+
+.subHead {
+  padding-left: 140px;
+  display: flex;
+  flex-direction: row;
+  justify-content: start;
+  align-items: center;
+  margin: 20px 0 0 0;
+}
+
+.subHeadH3 {
+  font-size: 30px;
+  font-weight: 400;
+  margin: 0 30px 0 0;
+}
+
+.divider {
+  margin: 5px auto 0;
+  width: 80%;
+  background: black;
+  height: 1px;
+}
+
+/* .PokemoncardWrapper {
+  background-color: gray;
+  display: block;
+  width: 85%;
+} */
+
+.allPokemons {
+  padding-left: 20px;
+  margin: 30px 100px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 20px;
+  align-items: center;
+  justify-content: center;
+}
+
+.spinner {
+  margin: 100px auto;
+  width: 56px;
+  height: 56px;
+  display: grid;
+  border: 4.5px solid #0000;
+  border-radius: 50%;
+  border-color: #dbdcef #0000;
+  animation: spinner-e04l1k 1s infinite linear;
+}
+
+.spinner::before,
+.spinner::after {
+  content: "";
+  grid-area: 1/1;
+  margin: 2.2px;
+  border: inherit;
+  border-radius: 50%;
+}
+
+.spinner::before {
+  border-color: #474bff #0000;
+  animation: inherit;
+  animation-duration: 0.5s;
+  animation-direction: reverse;
+}
+
+.spinner::after {
+  margin: 8.9px;
+}
+
+@keyframes spinner-e04l1k {
+  100% {
+    transform: rotate(1turn);
+  }
+}

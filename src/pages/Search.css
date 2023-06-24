@@ -1,0 +1,150 @@
+.Main {
+  background: #19335f;
+  color: whitesmoke;
+  height: auto;
+  min-height: 95vh;
+  max-width: 100vw;
+  margin: 0;
+  padding-top: 91px;
+  text-align: center;
+  overflow-x: hidden;
+}
+
+.Searchbar {
+  display: block;
+  width: 350px;
+  height: 40px;
+  margin: 0 auto;
+  padding: 10px 3px 0;
+
+  border-radius: 25px;
+}
+
+.inputbar {
+  width: 270px;
+  height: 40px;
+  background-color: white;
+  border: none;
+  border-radius: 25px 0 0 25px;
+  font-size: 18px;
+  padding-left: 18px;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+.searchButton {
+  width: 45px;
+  border-radius: 0 25px 25px 0;
+  height: 40px;
+  border: none;
+  margin-bottom: 3px;
+  font-size: 18px;
+  background-color: rgb(196, 176, 228);
+}
+
+.searchButton:hover,
+.inputbar:hover {
+  cursor: pointer;
+  border: 1px solid black;
+}
+
+.spinner {
+  margin: 100px auto;
+  width: 56px;
+  height: 56px;
+  display: grid;
+  border: 4.5px solid #0000;
+  border-radius: 50%;
+  border-color: #dbdcef #0000;
+  animation: spinner-e04l1k 1s infinite linear;
+}
+
+.spinner::before,
+.spinner::after {
+  content: "";
+  grid-area: 1/1;
+  margin: 2.2px;
+  border: inherit;
+  border-radius: 50%;
+}
+
+.spinner::before {
+  border-color: #474bff #0000;
+  animation: inherit;
+  animation-duration: 0.5s;
+  animation-direction: reverse;
+}
+
+.spinner::after {
+  margin: 8.9px;
+}
+
+@keyframes spinner-e04l1k {
+  100% {
+    transform: rotate(1turn);
+  }
+}
+
+/*  filter css  */
+.MainFilter {
+  line-height: 25px;
+
+  margin: 10px 20px;
+  background-color: antiquewhite;
+  border: none;
+  border-radius: 5px;
+  padding: 5px;
+  font-weight: 500;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+}
+.filterButton {
+  line-height: 25px;
+  width: 70px;
+  margin: 10px 20px;
+  background-color: antiquewhite;
+  border: none;
+  border-radius: 5px;
+  padding: 5px;
+  font-weight: 500;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+}
+
+.Typefilter {
+  max-width: 450px;
+  margin: 0px auto;
+  padding: 0 300px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+  grid-gap: none;
+}
+
+.typename {
+  line-height: 25px;
+  max-width: 70px;
+  margin: 10px 5px;
+  background-color: rgb(248, 244, 238);
+  border: none;
+  border-radius: 5px;
+  padding: 5px;
+  font-weight: 500;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+}
+
+.typename:hover,
+.filterButton:hover,
+.MainFilter:hover {
+  cursor: pointer;
+}
+
+.wrong {
+  font-size: 12px;
+  color: red;
+}
+
+.right {
+  font-size: 12px;
+  color: green;
+}
