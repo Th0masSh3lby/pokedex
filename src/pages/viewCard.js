@@ -97,7 +97,7 @@ const ViewCard = ({
             className="bookmarkButton"
           >
             {bookmark.indexOf(value.name) >= 0
-              ? "Bookmarked"
+              ? "Remove from Bookmark"
               : "Add to bookmark"}
           </div>
 
