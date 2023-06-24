@@ -30,18 +30,17 @@ Steps Taken
 1. NavBar --Done
 2. Footer --Done
 3. HomePage (CSs left)
-4. Features - List all Pokemons(using infinte scroll ==> send api request for more only if the scrollbar is below a certain mark) - Set Loading Spinner --Done - navigate from card to view Full details
-5. CardCSS -- Done
-6. ViewPage/card
+   Features - List all Pokemons(using infinte scroll ==> send api request for more only if the scrollbar is below a certain mark) - Set Loading Spinner --Done - navigate from card to view Full details
+4. CardCSS -- Done
+5. ViewPage/card
    Features - Popup , Toggle Bookmark button
    JS and CSS Done
-7. HomePage CSS - Done
-8. SearchPage(css Left)
+6. HomePage CSS - Done
+7. SearchPage(css Left)
+   Features - start sending api request only after Search button is submitted. Infinite scroll, Loading spinner and Viewcard same as Home Page.
+   Filter (initial thought filter for both type and abilities but number of abilities exceeded 20 so added only type filter)
 
-Features - start sending api request only after Search button is submitted. - Infinite scroll, Loading spinner and Viewcard same as Home Page.
--Filter (initial thought filter for both type and abilities but number of abilities exceeded 20 so added only type filter)
-
-9. SearchPageCSS - Done
-10. Bookmark and BookmarkCSS
-11. Features - Imported bookmarks and other features are same as HOmePage
-12. Adding to github and deploying - Done
+8. SearchPageCSS - Done
+9. Bookmark and BookmarkCSS
+10. Features - Imported bookmarks and other features are same as HOmePage
+11. Adding to github and deploying - Done
