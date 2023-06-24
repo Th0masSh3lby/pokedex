@@ -261,7 +261,9 @@ function Search({ setBookmark, bookmark, setBookmarkList, bookmarkList }) {
           })}
 
         {/*set Loading Error and End components */}
-        {view && (loading || loading1) && <div className="spinner"></div>}
+        {!(error || error1) && view && (loading || loading1) && (
+          <div className="spinner"></div>
+        )}
         {view && (error || error1) && (
           <div className="error">
             <h3>error fetching</h3>

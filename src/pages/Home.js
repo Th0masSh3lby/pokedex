@@ -210,7 +210,9 @@ function Home({ setBookmark, bookmark, bookmarkList, setBookmarkList }) {
             );
           })}
         {/*set Loading Error and End components */}
-        {(loading || loading1) && <div className="spinner"></div>}
+        {!(error2 || error1) && (loading || loading1) && (
+          <div className="spinner"></div>
+        )}
         {(error2 || error1) && (
           <div className="error">
             <h3>error fetching</h3>
